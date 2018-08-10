@@ -25,23 +25,6 @@ Either install the packages using `pip` or the package-management of your
 distribution.
 
 
-Installation
-------------
-
-Copy the directory `src/ediplug` to a directory which is on your python search
-path for packages (something like `/usr/local/lib/python2.7/site-packages`).
-
-To test the installation and that all necessary packages are available, run
-
-    src/samples/testinstall.py
-
-In your code, use
-
-    from ediplug import *
-
-You can find some annotated samples in the directory `src/samples`.
-
-
 Usage
 -----
 
