@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Class definition of SP1101W
 #
@@ -12,7 +12,7 @@
 
 __author__ = "Bernhard Bablok, https://github.com/bablokb"
 
-from Plug import Plug as Plug
+from .Plug import Plug as Plug
 
 class SP1101W(Plug):
   """Implement behaviour of the  Edimax SP1101W Plug"""

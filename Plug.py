@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Class definition of Plug
 #
@@ -16,11 +16,12 @@ __author__ = "Bernhard Bablok, https://github.com/bablokb"
 import sys
 import os
 import requests as req
+from requests.auth import HTTPDigestAuth
 from xml.dom.minidom import getDOMImplementation
 from xml.dom.minidom import parseString
 
-from Schedule import Schedule as Schedule
-from TPoint import TPoint as TPoint
+from .Schedule import Schedule as Schedule
+from .TPoint import TPoint as TPoint
 
 class Plug(object):
   """Base class of supported Edimax Plugs"""
@@ -63,9 +64,9 @@ class Plug(object):
     if self.__debug:
       sys.stderr.write(doc.toprettyxml())
       
-    res = req.post(self.__url, auth=self.__cred, files={'file': doc.toxml()})
+    res = req.post(self.__url, auth=HTTPDigestAuth(self.__cred[0], self.__cred[1]), files={'file': doc.toxml()})
     if self.__debug:
-      print res
+      print(res)
     if res.status_code == req.codes.ok:
       result = parseString(res.text)
       if self.__debug:
@@ -223,34 +224,34 @@ if __name__ == "__main__":
 
       # query power state
       state = plug.getPowerState()
-      print "Power state is active: %s" % state
+      print("Power state is active: %s" % state)
 
       # set power state
       result = plug.setPowerState(len(sys.argv) > 3)
-      print "Setting power state... success?:", result
+      print("Setting power state... success?:", result)
 
       # query current schedule
-      print "Current schedule:"
-      print plug.getSchedule()
+      print("Current schedule:")
+      print(plug.getSchedule())
 
       sched = Schedule(False)
       sched.setState(TPoint(TPoint.MON,0,0),TPoint(TPoint.TUE,0,0),True)
-      print "input schedule:"
-      print sched
-      print "Setting schedule... success:", plug.setSchedule(sched)
-      print "Output schedule from plug:"
-      #print plug.getSchedule(getDom=True).toprettyxml()
-      print plug.getSchedule()
+      print("input schedule:")
+      print(sched)
+      print("Setting schedule... success:", plug.setSchedule(sched))
+      print("Output schedule from plug:")
+      #print(plug.getSchedule(getDom=True).toprettyxml())
+      print(plug.getSchedule())
 
-      #print \
+      #print(\)
       #  plug.setState(TPoint(TPoint.FRI,0,0),TPoint(TPoint.SAT,0,0),False).\
       #  toprettyxml()
 
       #now = TPoint.now()
       #now = now.createAfter(1,0,0)
       #then = now.createAfter(0,3,0)
-      #print plug.setExclusiveState(now,then,False).toprettyxml()
+      #print(plug.setExclusiveState(now,then,False).toprettyxml())
     else:
-      print "please pass host/ip and password as argument"
+      print("please pass host/ip and password as argument")
   except Exception as e:
-    print e
+    print(e)

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Class definition of TPoint
 #
@@ -143,23 +143,23 @@ class TPoint(object):
 
 if __name__ == "__main__":
   tp = TPoint(0,0,0)
-  print "tp: %s" % tp
-  print "tp.getIndex(): %d" % tp.getIndex()
+  print("tp: %s" % tp)
+  print("tp.getIndex(): %d" % tp.getIndex())
 
-  tp = TPoint(0,10,02)
-  print "tp: %s" % tp
-  print "tp.getIndex(): %d" % tp.getIndex()
+  tp = TPoint(0,10,2)
+  print("tp: %s" % tp)
+  print("tp.getIndex(): %d" % tp.getIndex())
 
   tp2 = tp.createAfter(-1,-1,-5)
   #tp2 = tp.createAfter(0,0,0)
-  print "tp2 = tp.createAfter(-1,-1,-5): %s" % tp2
-  print "tp2.toTransport(): %s" % tp2.toTransport()
+  print("tp2 = tp.createAfter(-1,-1,-5): %s" % tp2)
+  print("tp2.toTransport(): %s" % tp2.toTransport())
   
   now = TPoint.now()
-  print "now: %s" % now
-  print "now.toTransport(): %s" % now.toTransport()
-  print "now (day number): %d" % now.day
+  print("now: %s" % now)
+  print("now.toTransport(): %s" % now.toTransport())
+  print("now (day number): %d" % now.day)
   
   now.day = TPoint.TUE
-  print "now on Tuesday: %s" % now
+  print("now on Tuesday: %s" % now)
   

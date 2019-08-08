@@ -8,11 +8,13 @@ This library allows to control all aspects of the Edimax Smartplugs
 SP1101W and SP2101W using Python and without access to the cloud of
 the manufacturer.
 
+It works with Version 2.08 of SP2101W.
+
 
 Prerequisites
 -------------
 
-The code was developed for Python2. You need the following additional
+The code was developed for Python3. You need the following additional
 packages:
 
   - minidom
@@ -21,7 +23,7 @@ packages:
   - requests
   - socket
 
-Either install the packages using `pip` or the package-management of your
+Either install the packages using `pip3` or the package-management of your
 distribution.
 
 

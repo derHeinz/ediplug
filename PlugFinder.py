@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Class definition of PlugFinder
 #
@@ -18,9 +18,9 @@ import sys
 import socket
 import netifaces
 import netaddr
-from Plug import Plug as Plug
-from SP1101W import SP1101W as SP1101W
-from SP2101W import SP2101W as SP2101W
+from .Plug import Plug as Plug
+from .SP1101W import SP1101W as SP1101W
+from .SP2101W import SP2101W as SP2101W
 
 class PlugFinder(object):
   """Search for Plugs in the network"""
@@ -111,12 +111,12 @@ class PlugFinder(object):
 if __name__ == "__main__":
   """pass network and password as arguments"""
   if len(sys.argv) < 3:
-    print "pass network and password as arguments"
+    print("pass network and password as arguments")
   else:
     pf = PlugFinder(password=sys.argv[2])
     plug = pf.search(sys.argv[1],maxCount=1).values()[0]
     name, type = plug.getNameAndType()
-    print "Name: %s\nType: %s\nURL:  %s\n" % (name, type, plug.getUrl())
+    print("Name: %s\nType: %s\nURL:  %s\n" % (name, type, plug.getUrl()))
     plugInfo = plug.getSysInfo()
     for key in plugInfo.keys():
-      print "%s: %s" % (key,plugInfo[key])
+      print("%s: %s" % (key,plugInfo[key]))
